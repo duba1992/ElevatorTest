@@ -57,6 +57,77 @@ class CoreDataRequiest {
         
     }
     
+    
+    static func requistExitPassanger(byFloorNumber number : Int32, withElevator elevator : Elevator) -> [Passanger]? {
+        var passangers = [Passanger]()
+        
+        let fetchRequest = DDCoreDataManager.instance.FetchRequest(forEntityName: Passanger.typeName)
+        let fetchPredicate = NSPredicate(format: "finishFloor = %d AND inElevator == YES", number)
+        var sortDescriptor : NSSortDescriptor!
+        if elevator.directionUp == true {
+            
+            sortDescriptor = NSSortDescriptor(key: "finishFloor", ascending: true)
+            
+        } else {
+            
+            sortDescriptor = NSSortDescriptor(key: "finishFloor", ascending: false)
+        }
+        fetchRequest.predicate = fetchPredicate
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        do {
+            let result = try DDCoreDataManager.instance.managedObjectContext.fetch(fetchRequest)
+            if result.count > 0 {
+                passangers =  result as! [NSManagedObject] as! [Passanger]
+            }
+            
+            
+        } catch {
+            let fetchError = error as NSError
+            print(fetchError)
+        }
+        
+        return passangers.count > 0 ? passangers: nil
+    }
+    static func requistEnterPassanger(byFloorNumber number : Int32) -> [Passanger]? {
+        var passangers = [Passanger]()
+        let fetchRequest = DDCoreDataManager.instance.FetchRequest(forEntityName: Passanger.typeName)
+        let fetchPredicate = NSPredicate(format: "startFloor = %d  AND inElevator == NO", number)
+        fetchRequest.predicate = fetchPredicate
+        do {
+            let result = try DDCoreDataManager.instance.managedObjectContext.fetch(fetchRequest)
+            if result.count > 0 {
+                passangers =  result as! [NSManagedObject] as! [Passanger]
+            }
+            
+        } catch {
+            let fetchError = error as NSError
+            print(fetchError)
+        }
+        
+        return passangers.count > 0 ? passangers: nil
+    }
+    
+    static func requistAllPassangers() -> [Passanger]? {
+        
+        // function for the test
+        var passangers = [Passanger]()
+        let fetchRequest = DDCoreDataManager.instance.FetchRequest(forEntityName: Passanger.typeName)
+        
+        do {
+            let result = try DDCoreDataManager.instance.managedObjectContext.fetch(fetchRequest)
+            if result.count > 0 {
+                passangers =  result as! [NSManagedObject] as! [Passanger]
+            }
+            
+            
+        } catch {
+            let fetchError = error as NSError
+            print(fetchError)
+        }
+        
+        return passangers.count > 0 ? passangers: nil
+    }
+    //MARK:- Requist Floors
     static func reguistFloar(by floorNumber : Int32) -> Floor? {
         
         var floar = [Floor]()
@@ -79,25 +150,7 @@ class CoreDataRequiest {
         
         
     }
-    //MARK:- Requist Floors
-    static func requistEnterPassanger(byFloorNumber number : Int32) -> [Passanger]? {
-        var passangers = [Passanger]()
-        let fetchRequest = DDCoreDataManager.instance.FetchRequest(forEntityName: Passanger.typeName)
-        let fetchPredicate = NSPredicate(format: "startFloor = %d  AND inElevator == NO", number)
-        fetchRequest.predicate = fetchPredicate
-        do {
-            let result = try DDCoreDataManager.instance.managedObjectContext.fetch(fetchRequest)
-            if result.count > 0 {
-                passangers =  result as! [NSManagedObject] as! [Passanger]
-            }
-            
-        } catch {
-            let fetchError = error as NSError
-            print(fetchError)
-        }
-        
-        return passangers.count > 0 ? passangers: nil
-    }
+    
     
     static func requistWaiterNearestFloor(elevator : Elevator) -> Floor? {
         var floar : [Floor]!
@@ -164,57 +217,9 @@ class CoreDataRequiest {
     }
     
    
-    static func requistAllPassangers() -> [Passanger]? {
-       
-        // function for the test
-        var passangers = [Passanger]()
-        let fetchRequest = DDCoreDataManager.instance.FetchRequest(forEntityName: Passanger.typeName)
+   
     
-        do {
-            let result = try DDCoreDataManager.instance.managedObjectContext.fetch(fetchRequest)
-            if result.count > 0 {
-                passangers =  result as! [NSManagedObject] as! [Passanger]
-            }
-            
-            
-        } catch {
-            let fetchError = error as NSError
-            print(fetchError)
-        }
-        
-        return passangers.count > 0 ? passangers: nil
-    }
     
-    static func requistExitPassanger(byFloorNumber number : Int32, withElevator elevator : Elevator) -> [Passanger]? {
-        var passangers = [Passanger]()
-       
-        let fetchRequest = DDCoreDataManager.instance.FetchRequest(forEntityName: Passanger.typeName)
-        let fetchPredicate = NSPredicate(format: "finishFloor = %d AND inElevator == YES", number)
-        var sortDescriptor : NSSortDescriptor!
-        if elevator.directionUp == true {
-          
-            sortDescriptor = NSSortDescriptor(key: "finishFloor", ascending: true)
-            
-        } else {
-
-            sortDescriptor = NSSortDescriptor(key: "finishFloor", ascending: false)
-        }
-        fetchRequest.predicate = fetchPredicate
-        fetchRequest.sortDescriptors = [sortDescriptor]
-        do {
-            let result = try DDCoreDataManager.instance.managedObjectContext.fetch(fetchRequest)
-            if result.count > 0 {
-                passangers =  result as! [NSManagedObject] as! [Passanger]
-            }
-            
-            
-        } catch {
-            let fetchError = error as NSError
-            print(fetchError)
-        }
-        
-        return passangers.count > 0 ? passangers: nil
-    }
    
     
     //MARK: Delete data by entity
