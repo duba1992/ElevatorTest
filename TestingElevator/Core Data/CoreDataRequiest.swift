@@ -216,11 +216,6 @@ class CoreDataRequiest {
         
     }
     
-   
-   
-    
-    
-   
     
     //MARK: Delete data by entity
     static  func deleteAllData(entity: String)

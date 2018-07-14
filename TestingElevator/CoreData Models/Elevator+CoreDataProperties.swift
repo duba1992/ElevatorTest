@@ -2,7 +2,7 @@
 //  Elevator+CoreDataProperties.swift
 //  TestingElevator
 //
-//  Created by Duba on 12.07.2018.
+//  Created by Duba on 14.07.2018.
 //  Copyright © 2018 Duba. All rights reserved.
 //
 //
@@ -20,6 +20,7 @@ extension Elevator {
     @NSManaged public var currentFloor: Int32
     @NSManaged public var directionUp: Bool
     @NSManaged public var maxFloor: Int32
+    @NSManaged public var maxPassangers: Int32
     @NSManaged public var floors: NSSet?
     @NSManaged public var passangers: NSSet?
 

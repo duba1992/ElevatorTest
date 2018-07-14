@@ -2,7 +2,7 @@
 //  Elevator+CoreDataClass.swift
 //  TestingElevator
 //
-//  Created by Duba on 12.07.2018.
+//  Created by Duba on 14.07.2018.
 //  Copyright © 2018 Duba. All rights reserved.
 //
 //

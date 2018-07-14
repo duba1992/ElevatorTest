@@ -5,6 +5,7 @@
         <attribute name="currentFloor" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="directionUp" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="maxFloor" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="maxPassangers" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="floors" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Floor" inverseName="elevator" inverseEntity="Floor" syncable="YES"/>
         <relationship name="passangers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Passanger" inverseName="elevator" inverseEntity="Passanger" syncable="YES"/>
     </entity>
@@ -23,7 +24,7 @@
     </entity>
     <elements>
         <element name="Abstract" positionX="-180" positionY="-304" width="128" height="45"/>
-        <element name="Elevator" positionX="-20" positionY="-136" width="128" height="118"/>
+        <element name="Elevator" positionX="-20" positionY="-136" width="128" height="135"/>
         <element name="Floor" positionX="-441" positionY="-207" width="128" height="90"/>
         <element name="Passanger" positionX="-479" positionY="18" width="128" height="133"/>
     </elements>

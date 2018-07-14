@@ -9,7 +9,9 @@
 import Foundation
 import CoreData
 extension Elevator {
+    
     func basicSettings() {
+        maxPassangers = 5
         currentFloor = 2 // start on second floor
         var passangersEnter : [Passanger]!
         directionUp = true // choice direction
@@ -31,7 +33,7 @@ extension Elevator {
         }
         // enter first passangers
         for pas in passangersEnter {
-            if passangers?.count == 5 {
+            if elevatorIsFull() {
                 break
             }
             pas.inElevator = true
@@ -40,9 +42,6 @@ extension Elevator {
             addToPassangers(pas)
         }
     }
-    
-    
-    
     
     func roofOrFloor (){
         // Check max flore or first flore and change direction
@@ -68,110 +67,104 @@ extension Elevator {
         
         let passangerExit = CoreDataRequiest.requistExitPassanger(byFloorNumber: currentFloor, withElevator: self)
         
-        if passangerExit != nil && passangers?.count == 5 { // elevator is full
-            return true
+        if passangerExit == nil && elevatorIsFull() { // elevator is full
+            return false
         }
-        
         let floor = CoreDataRequiest.requistWaiterFloor(elevator: self)
-        
-        
-        if floor != nil {//waiters on floor
+
+        if floor != nil && elevatorIsFull() == false {//waiters on floor
             return true
         }
         if passangerExit != nil {
-            return true
+            return true 
         }
         return false
     }
     //MARK : - Enter passanger in the elevator and remove from the floor
-    func enterPassanger() {
-        
-        
+    func enterPassanger(passangersEntered : ([Passanger]) -> ()) {
+ 
         let passangerEnter = CoreDataRequiest.requistPassanger(byFloorNumber: currentFloor, andDirection: directionUp)
         guard passangerEnter != nil else {
             return
         }
+        var passangersShow = [Passanger]()
         let floor = CoreDataRequiest.reguistFloar(by: currentFloor)
         for pas in passangerEnter! {
-            if self.passangers?.count == 5 {
+            if  elevatorIsFull() {
                 break
             }
             pas.inElevator = true
             addToPassangers(pas)
             floor?.removeFromPassangers(pas)
+            passangersShow.append(pas)
             DDCoreDataManager.instance.saveContext()
         }
         
+        passangersEntered(passangersShow)
     }
     
-    //If elevator empty and passengers choose where to go by most direction
-    func emptyElevatorChoiseDirection() -> Bool? {
-        let pas = CoreDataRequiest.requistEnterPassanger(byFloorNumber: currentFloor)
-        guard let enterPassangers = pas else {
-            return nil
-        }
-        var countUp = 0
-        var countDown = 0
-        
-        for passanger in enterPassangers {
-            if currentFloor < passanger.finishFloor {
-                countUp = countUp + 1
-            } else {
-                countDown = countDown + 1
-            }
-        }
-        if countUp > countDown {
-            directionUp = true
-            return true
-        } else {
-            directionUp = false
-            return true
-        }
-
-    }
+    
     // exit passanger to the required floor and remove passanger from the elevator
-    func exitPassanger() {
-        enterPassanger()
+    func exitPassanger(passangersLeft : ([Passanger]) -> ()) {
         let passangersExit = CoreDataRequiest.requistExitPassanger(byFloorNumber: currentFloor, withElevator: self)
         guard passangersExit != nil else {
             return //nobody comes out of the elevator
         }
         let floor = CoreDataRequiest.reguistFloar(by: currentFloor)
         for pas in passangersExit! {
-            
-            
             self.removeFromPassangers(pas)
-            pas.startFloor = currentFloor
-            var finishFloar = pas.startFloor
-            while pas.startFloor == finishFloar {
-                finishFloar = Int32(arc4random_uniform(UInt32(maxFloor - 1)) + 1)
-                pas.finishFloor = finishFloar
+            
+            pas.newPassangerChoise(maxFloor: maxFloor) { (passanger) in
+                 floor?.addToPassangers(passanger)
             }
-            if pas.startFloor < pas.finishFloor {
-                pas.directionUp = true
-            } else {
-                pas.directionUp = false
-            }
-            pas.inElevator = false
-            floor?.addToPassangers(pas)
+            
             DDCoreDataManager.instance.saveContext()
         }
         
         if self.passangers?.count == 0 {
-            // if elevate empty
-            let choiseDirection = emptyElevatorChoiseDirection()
-            if choiseDirection == nil {
-                let floor = CoreDataRequiest.requistWaiterNearestFloor(elevator: self)
-                 // if floor empty, find the next flore
-                if (floor?.numberOfFloor)! > currentFloor {
-                    directionUp = true
-                } else {
-                    directionUp = false
-                }
-            
+            emptyElevator()
+        }
+        passangersLeft(passangersExit!)
+    }
+    func emptyElevator () {
+        let choiseDirection = emptyElevatorChoiseDirection()
+        // no one on the floor
+        if choiseDirection == nil {
+            let floor = CoreDataRequiest.requistWaiterNearestFloor(elevator: self)
+            // if floor empty, find the next flore
+            if (floor?.numberOfFloor)! > currentFloor {
+                directionUp = true
+            } else {
+                directionUp = false
             }
         }
     }
+    //If elevator empty and passengers choose where to go by most direction
+    func emptyElevatorChoiseDirection() -> Bool? {
+        let pas = CoreDataRequiest.requistEnterPassanger(byFloorNumber: currentFloor)
+        guard let enterPassangers = pas else {
+            return nil
+        }
+        let passangerUp = enterPassangers.filter { $0.directionUp == true }
+        let passangerDown = enterPassangers.filter { $0.directionUp == false}
+        
+       
+        if passangerUp.count > passangerDown.count {
+            directionUp = true
+        } else {
+            directionUp = false
+        }
+        return true
+    }
+    func elevatorIsFull() -> Bool {
+        if passangers?.count == Int(maxPassangers) {
+            return true
+        }
+        return false
+    }
+    
+    
+    
 }
 
 

@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		850B7D3720FA3BFF003B7C43 /* PassangerFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850B7D3620FA3BFF003B7C43 /* PassangerFunction.swift */; };
+		850B7D4A20FA5518003B7C43 /* Passanger+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850B7D4620FA5518003B7C43 /* Passanger+CoreDataClass.swift */; };
+		850B7D4B20FA5518003B7C43 /* Passanger+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850B7D4720FA5518003B7C43 /* Passanger+CoreDataProperties.swift */; };
+		850B7D4C20FA5518003B7C43 /* Elevator+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850B7D4820FA5518003B7C43 /* Elevator+CoreDataClass.swift */; };
+		850B7D4D20FA5518003B7C43 /* Elevator+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850B7D4920FA5518003B7C43 /* Elevator+CoreDataProperties.swift */; };
 		852927E120F68D84000E6CF9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852927E020F68D84000E6CF9 /* AppDelegate.swift */; };
 		852927E320F68D84000E6CF9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852927E220F68D84000E6CF9 /* ViewController.swift */; };
 		852927E620F68D84000E6CF9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 852927E420F68D84000E6CF9 /* Main.storyboard */; };
@@ -21,13 +26,14 @@
 		8529282220F718E6000E6CF9 /* ElevatorFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8529282120F718E6000E6CF9 /* ElevatorFunction.swift */; };
 		8529283B20F7878E000E6CF9 /* Floor+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8529283520F7878E000E6CF9 /* Floor+CoreDataClass.swift */; };
 		8529283C20F7878E000E6CF9 /* Floor+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8529283620F7878E000E6CF9 /* Floor+CoreDataProperties.swift */; };
-		8529283D20F7878E000E6CF9 /* Passanger+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8529283720F7878E000E6CF9 /* Passanger+CoreDataClass.swift */; };
-		8529283E20F7878E000E6CF9 /* Passanger+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8529283820F7878E000E6CF9 /* Passanger+CoreDataProperties.swift */; };
-		8529283F20F7878E000E6CF9 /* Elevator+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8529283920F7878E000E6CF9 /* Elevator+CoreDataClass.swift */; };
-		8529284020F7878E000E6CF9 /* Elevator+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8529283A20F7878E000E6CF9 /* Elevator+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		850B7D3620FA3BFF003B7C43 /* PassangerFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassangerFunction.swift; sourceTree = "<group>"; };
+		850B7D4620FA5518003B7C43 /* Passanger+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Passanger+CoreDataClass.swift"; sourceTree = "<group>"; };
+		850B7D4720FA5518003B7C43 /* Passanger+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Passanger+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		850B7D4820FA5518003B7C43 /* Elevator+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Elevator+CoreDataClass.swift"; sourceTree = "<group>"; };
+		850B7D4920FA5518003B7C43 /* Elevator+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Elevator+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		852927DD20F68D84000E6CF9 /* TestingElevator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestingElevator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		852927E020F68D84000E6CF9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		852927E220F68D84000E6CF9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -44,10 +50,6 @@
 		8529282120F718E6000E6CF9 /* ElevatorFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElevatorFunction.swift; sourceTree = "<group>"; };
 		8529283520F7878E000E6CF9 /* Floor+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Floor+CoreDataClass.swift"; sourceTree = "<group>"; };
 		8529283620F7878E000E6CF9 /* Floor+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Floor+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		8529283720F7878E000E6CF9 /* Passanger+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Passanger+CoreDataClass.swift"; sourceTree = "<group>"; };
-		8529283820F7878E000E6CF9 /* Passanger+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Passanger+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		8529283920F7878E000E6CF9 /* Elevator+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Elevator+CoreDataClass.swift"; sourceTree = "<group>"; };
-		8529283A20F7878E000E6CF9 /* Elevator+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Elevator+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,12 +99,12 @@
 		852927F520F70305000E6CF9 /* CoreData Models */ = {
 			isa = PBXGroup;
 			children = (
+				850B7D4620FA5518003B7C43 /* Passanger+CoreDataClass.swift */,
+				850B7D4720FA5518003B7C43 /* Passanger+CoreDataProperties.swift */,
+				850B7D4820FA5518003B7C43 /* Elevator+CoreDataClass.swift */,
+				850B7D4920FA5518003B7C43 /* Elevator+CoreDataProperties.swift */,
 				8529283520F7878E000E6CF9 /* Floor+CoreDataClass.swift */,
 				8529283620F7878E000E6CF9 /* Floor+CoreDataProperties.swift */,
-				8529283720F7878E000E6CF9 /* Passanger+CoreDataClass.swift */,
-				8529283820F7878E000E6CF9 /* Passanger+CoreDataProperties.swift */,
-				8529283920F7878E000E6CF9 /* Elevator+CoreDataClass.swift */,
-				8529283A20F7878E000E6CF9 /* Elevator+CoreDataProperties.swift */,
 				8529280B20F70482000E6CF9 /* Abstract+CoreDataClass.swift */,
 				8529280C20F70482000E6CF9 /* Abstract+CoreDataProperties.swift */,
 			);
@@ -123,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				8529282120F718E6000E6CF9 /* ElevatorFunction.swift */,
+				850B7D3620FA3BFF003B7C43 /* PassangerFunction.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -206,18 +209,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8529283D20F7878E000E6CF9 /* Passanger+CoreDataClass.swift in Sources */,
-				8529284020F7878E000E6CF9 /* Elevator+CoreDataProperties.swift in Sources */,
-				8529283F20F7878E000E6CF9 /* Elevator+CoreDataClass.swift in Sources */,
 				8529283C20F7878E000E6CF9 /* Floor+CoreDataProperties.swift in Sources */,
 				852927E320F68D84000E6CF9 /* ViewController.swift in Sources */,
 				8529282220F718E6000E6CF9 /* ElevatorFunction.swift in Sources */,
+				850B7D4A20FA5518003B7C43 /* Passanger+CoreDataClass.swift in Sources */,
+				850B7D4C20FA5518003B7C43 /* Elevator+CoreDataClass.swift in Sources */,
+				850B7D4B20FA5518003B7C43 /* Passanger+CoreDataProperties.swift in Sources */,
 				8529281420F70482000E6CF9 /* Abstract+CoreDataProperties.swift in Sources */,
 				852927E920F68D84000E6CF9 /* TestingElevator.xcdatamodeld in Sources */,
-				8529283E20F7878E000E6CF9 /* Passanger+CoreDataProperties.swift in Sources */,
 				8529281C20F7069D000E6CF9 /* CoreDataRequiest.swift in Sources */,
 				852927E120F68D84000E6CF9 /* AppDelegate.swift in Sources */,
 				8529283B20F7878E000E6CF9 /* Floor+CoreDataClass.swift in Sources */,
+				850B7D4D20FA5518003B7C43 /* Elevator+CoreDataProperties.swift in Sources */,
+				850B7D3720FA3BFF003B7C43 /* PassangerFunction.swift in Sources */,
 				8529280820F7038A000E6CF9 /* DDCoreDataManager.swift in Sources */,
 				8529281A20F70526000E6CF9 /* InitCoreData.swift in Sources */,
 				8529281320F70482000E6CF9 /* Abstract+CoreDataClass.swift in Sources */,
